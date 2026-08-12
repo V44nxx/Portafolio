@@ -816,6 +816,11 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
   100% { top: calc(100% + 2px); opacity: 0; }
 }
 
+/* Fondo Juicios Evaluativos SENA */
+.project__mockup--juicios .project__mockup-screen {
+  background: linear-gradient(135deg, #091e16 0%, #0d2c20 100%);
+}
+
 /* Fondo DataOff */
 .project__mockup--dataoff .project__mockup-screen {
   background: var(--bg-card);
