@@ -650,6 +650,11 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
   filter: drop-shadow(0 4px 8px currentColor);
 }
 
+.project__status-badge {
+  margin-bottom: var(--sp-md);
+  margin-top: calc(-0.4 * var(--sp-sm));
+}
+
 /* Botones */
 .project__actions {
   display: flex;
