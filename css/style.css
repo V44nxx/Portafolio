@@ -91,12 +91,21 @@
 /* ──────────────────────────────────
    2. RESET
    ────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent !important;
+}
 
 html {
   scroll-behavior: smooth;
   font-size: 16px;
   scroll-padding-top: var(--nav-h);
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -105,7 +114,27 @@ body {
   color: var(--text-1);
   line-height: 1.65;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100vw;
+  position: relative;
   -webkit-font-smoothing: antialiased;
+  -webkit-touch-callout: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+p, strong, span, h1, h2, h3, h4, code, input, textarea {
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+.navbar, .hero, .project, .project__visual, .project__mockup,
+.project__mockup-browser, .project__actions, .project__btn,
+.skill__tag, .skills__grid, .contact__social-link,
+.slant-divider, .back-to-top, .loader {
+  -webkit-user-select: none !important;
+  user-select: none !important;
+  -webkit-touch-callout: none !important;
 }
 
 a { color: inherit; text-decoration: none; transition: color var(--ease); cursor: pointer; }
@@ -135,14 +164,18 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
    4. UTILIDADES
    ────────────────────────────────── */
 .container {
+  width: 100%;
   max-width: 960px;
   margin: 0 auto;
   padding: 0 var(--sp-lg);
+  box-sizing: border-box;
 }
 
 .section {
   padding: 3.5rem 0;
   position: relative;
+  overflow: hidden;
+  width: 100%;
 }
 
 /* ─── SEPARADORES DIAGONALES NATURALES (Sin líneas azules, corte suave y sin huecos) ─── */
@@ -1268,6 +1301,20 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* ── Tablets Portrait & Móviles Grandes (<= 768px) ── */
 @media (max-width: 768px) {
+  /* Entrada suave vertical en móviles para eliminar desbordamientos laterales */
+  [data-anim="left"],
+  [data-anim="right"],
+  [data-anim="diag-l"],
+  [data-anim="diag-r"] {
+    transform: translateY(20px);
+  }
+
+  .container {
+    padding: 0 1.25rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
   .navbar__container { justify-content: space-between; }
   .navbar__links {
     position: fixed;
@@ -1301,24 +1348,25 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   /* Hero */
   .hero {
     min-height: 90vh;
-    padding: calc(var(--nav-h) + 2rem) var(--sp-md) var(--sp-2xl);
+    padding: calc(var(--nav-h) + 2rem) 0 var(--sp-2xl);
   }
   .hero__greeting { font-size: clamp(1.1rem, 4vw, 1.35rem); }
   .hero__tagline { font-size: clamp(1.85rem, 6.8vw, 2.75rem); line-height: 1.15; }
   .hero__rotating-line { font-size: clamp(1.25rem, 4.8vw, 1.8rem); }
   
   /* Secciones & Títulos */
-  .section { padding: 2.8rem 0; }
+  .section { padding: 2.8rem 0; width: 100%; overflow: hidden; }
   .section__title { font-size: clamp(1.75rem, 5.5vw, 2.35rem); margin-bottom: var(--sp-lg); }
   .about__body p,
   .skills__intro,
   .contact__intro { font-size: 1rem; line-height: 1.75; }
 
   /* Skills grid */
-  .skills__grid { gap: 0.55rem; }
+  .skills__grid { gap: 0.55rem; width: 100%; }
   .skill__tag { padding: 0.45rem 0.9rem; font-size: 0.82rem; }
 
   /* Work / Mockups */
+  .project { width: 100%; }
   .project__name { font-size: 1.5rem; }
   .project__desc { font-size: 0.95rem; line-height: 1.7; }
   .project__techs { font-size: 1.35rem; gap: 0.5rem; }
@@ -1333,7 +1381,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   .contact__submit { width: 100%; justify-content: center; padding: 0.85rem; }
   
   /* Social links */
-  .contact__social-link { padding: 0.75rem 1rem; }
+  .contact__social-link { padding: 0.75rem 1rem; width: 100%; }
   .contact__social-handle { font-size: 0.75rem !important; }
 }
 
