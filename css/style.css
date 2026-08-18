@@ -821,6 +821,130 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
   background: linear-gradient(135deg, #091e16 0%, #0d2c20 100%);
 }
 
+/* ── Estilos y Animación Exclusiva: Document AI Enterprise ── */
+.project__mockup--ocr .project__mockup-screen {
+  background: linear-gradient(135deg, #050b18 0%, #0c1834 50%, #061224 100%);
+}
+.project__mockup--ocr .project__mockup-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  filter: brightness(0.92) contrast(1.05);
+  transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1), filter 0.4s ease;
+}
+.project:hover .project__mockup--ocr .project__mockup-img {
+  filter: brightness(1.05) contrast(1.08);
+  transform: scale(1.03);
+}
+
+/* Contenedor HUD Document AI */
+.project__mockup-docai {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 3;
+}
+
+/* 1. Barrido de onda AI dual (Cian + Púrpura) */
+.docai-beam {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 38px;
+  background: linear-gradient(180deg, rgba(56,189,248,0) 0%, rgba(56,189,248,0.25) 50%, rgba(168,85,247,0.4) 90%, #38bdf8 100%);
+  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.6), 0 0 35px rgba(168, 85, 247, 0.4);
+  border-bottom: 2px solid #38bdf8;
+  animation: docaiSweep 3.6s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  top: -40px;
+}
+@keyframes docaiSweep {
+  0%   { top: -45px; opacity: 0; }
+  12%  { opacity: 0.9; }
+  88%  { opacity: 0.9; }
+  100% { top: calc(100% + 15px); opacity: 0; }
+}
+
+/* 2. Retículas HUD en las 4 esquinas */
+.docai-reticle {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: #38bdf8;
+  border-style: solid;
+  opacity: 0.65;
+  transition: all 0.3s ease;
+  animation: docaiReticlePulse 2.8s ease-in-out infinite;
+}
+.docai-reticle--tl { top: 12px; left: 12px; border-width: 2px 0 0 2px; }
+.docai-reticle--tr { top: 12px; right: 12px; border-width: 2px 2px 0 0; }
+.docai-reticle--bl { bottom: 12px; left: 12px; border-width: 0 0 2px 2px; }
+.docai-reticle--br { bottom: 12px; right: 12px; border-width: 0 2px 2px 0; }
+
+@keyframes docaiReticlePulse {
+  0%, 100% {
+    opacity: 0.45;
+    filter: drop-shadow(0 0 2px rgba(56,189,248,0.3));
+    transform: scale(0.95);
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(56,189,248,0.9));
+    transform: scale(1.08);
+  }
+}
+
+/* 3. Bounding Box de detección inteligente */
+.docai-target {
+  position: absolute;
+  top: 24%;
+  left: 20%;
+  width: 48%;
+  height: 52%;
+  border: 1px dashed rgba(56, 189, 248, 0.4);
+  border-radius: var(--r-sm);
+  background: rgba(56, 189, 248, 0.03);
+  animation: docaiTargetPulse 3.6s ease-in-out infinite;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 4px 6px;
+}
+.docai-target-tag {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: #38bdf8;
+  background: rgba(10, 20, 40, 0.85);
+  border: 1px solid rgba(56, 189, 248, 0.5);
+  padding: 1px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.05em;
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.3);
+}
+
+@keyframes docaiTargetPulse {
+  0%, 100% {
+    border-color: rgba(56, 189, 248, 0.3);
+    background: rgba(56, 189, 248, 0.02);
+  }
+  50% {
+    border-color: rgba(56, 189, 248, 0.75);
+    background: rgba(56, 189, 248, 0.08);
+    box-shadow: 0 0 20px rgba(56, 189, 248, 0.25), inset 0 0 15px rgba(56, 189, 248, 0.1);
+  }
+}
+
+/* 4. Cuadrícula HUD sutil */
+.docai-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba(56, 189, 248, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: 0.7;
+}
+
 /* Fondo DataOff */
 .project__mockup--dataoff .project__mockup-screen {
   background: var(--bg-card);

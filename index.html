@@ -9,10 +9,10 @@
   <!-- SEO -->
   <title>Emerson Corredor Murcia | Desarrollador de Software</title>
   <meta name="description"
-    content="Portafolio profesional de Emerson Corredor Murcia, Desarrollador de Software especializado en soluciones web modernas con Python, Flask, HTML, CSS y JavaScript." />
+    content="Portafolio profesional de Emerson Corredor Murcia, Desarrollador de Software especializado en soluciones web modernas con Python, FastAPI, Flask, Next.js, React, OCR e Inteligencia Artificial." />
   <meta name="author" content="Emerson Corredor Murcia" />
   <meta name="keywords"
-    content="desarrollador web, Python, Flask, HTML, CSS, JavaScript, MySQL, portafolio, Colombia" />
+    content="desarrollador web, Python, FastAPI, Next.js, React, Flask, OCR, Document AI Enterprise, Google Cloud, JavaScript, MySQL, portafolio, Colombia" />
   <meta name="robots" content="index, follow" />
 
   <!-- Open Graph -->
@@ -186,25 +186,41 @@
           <i class="devicon-javascript-plain colored"></i>
           <span>JavaScript</span>
         </div>
-        <!-- Backend -->
         <div class="skill__tag">
-          <i class="devicon-php-plain colored"></i>
-          <span>PHP</span>
+          <i class="devicon-react-original colored"></i>
+          <span>React</span>
         </div>
+        <div class="skill__tag">
+          <i class="devicon-nextjs-plain"></i>
+          <span>Next.js</span>
+        </div>
+        <div class="skill__tag">
+          <i class="devicon-tailwindcss-plain colored"></i>
+          <span>Tailwind CSS</span>
+        </div>
+        <!-- Backend -->
         <div class="skill__tag">
           <i class="devicon-python-plain colored"></i>
           <span>Python</span>
         </div>
         <div class="skill__tag">
+          <i class="devicon-fastapi-plain colored"></i>
+          <span>FastAPI</span>
+        </div>
+        <div class="skill__tag">
           <i class="devicon-flask-original"></i>
           <span>Flask</span>
+        </div>
+        <div class="skill__tag">
+          <i class="devicon-php-plain colored"></i>
+          <span>PHP</span>
         </div>
         <!-- DB -->
         <div class="skill__tag">
           <i class="devicon-mysql-plain colored"></i>
           <span>MySQL</span>
         </div>
-        <!-- Tools -->
+        <!-- Tools & OCR -->
         <div class="skill__tag">
           <i class="devicon-docker-plain colored"></i>
           <span>Docker</span>
@@ -220,6 +236,14 @@
         <div class="skill__tag">
           <i class="devicon-vscode-plain colored"></i>
           <span>VS Code</span>
+        </div>
+        <div class="skill__tag">
+          <i class="devicon-googlecloud-plain colored"></i>
+          <span>Google Cloud</span>
+        </div>
+        <div class="skill__tag">
+          <i class="bx bx-scan"></i>
+          <span>Document AI Enterprise</span>
         </div>
         <div class="skill__tag">
           <i class="bx bx-scan"></i>
@@ -294,9 +318,68 @@
         </div>
       </article>
 
-      <!-- ── PROYECTO 2: Sistema OCR Farmax ── -->
+      <!-- ── PROYECTO 2: Sistema OCR Documental Colombiano ── -->
       <article class="project" data-layout="even">
         <div class="project__info" data-anim="right" data-delay="2">
+          <h3 class="project__name">Sistema OCR — Identificación Colombiana</h3>
+          <p class="project__desc">
+            Plataforma fullstack de alta precisión impulsada por <strong>Google Cloud Document AI Enterprise</strong> para la extracción
+            inteligente de datos en PDFs de documentos de identidad colombianos (Cédula de Ciudadanía y Tarjeta de Identidad).
+            Incluye validación de score de confianza, gestión de personas y un <strong>motor de cruce y comparación masiva</strong> contra archivos Excel externos.
+          </p>
+          <div class="project__techs">
+            <i class="devicon-nextjs-plain" title="Next.js"></i>
+            <i class="devicon-react-original colored" title="React"></i>
+            <i class="devicon-tailwindcss-plain colored" title="Tailwind CSS"></i>
+            <i class="devicon-python-plain colored" title="Python"></i>
+            <i class="devicon-fastapi-plain colored" title="FastAPI"></i>
+            <i class="devicon-googlecloud-plain colored" title="Google Cloud (Document AI Enterprise)"></i>
+            <i class="bx bx-scan" title="Document AI Enterprise"></i>
+            <i class="bx bx-camera" title="OpenCV"></i>
+          </div>
+          <div class="project__actions">
+            <a href="https://proyectoocr.v44nxx.online/" class="project__btn" target="_blank" rel="noopener noreferrer">
+              View It Here <i class="bx bx-right-arrow-alt"></i>
+            </a>
+            <a href="https://github.com/V44nxx/Proyecto_ocr.git" class="project__btn project__btn--ghost" target="_blank"
+              rel="noopener noreferrer">
+              View Github Repo <i class="bx bxl-github"></i>
+            </a>
+          </div>
+        </div>
+        <div class="project__visual" data-anim="left" data-delay="3">
+          <div class="project__mockup project__mockup--ocr">
+            <div class="project__mockup-browser">
+              <div class="project__mockup-bar">
+                <span></span><span></span><span></span>
+                <div class="project__mockup-url">proyectoocr.v44nxx.online</div>
+              </div>
+              <div class="project__mockup-screen">
+                <img src="images/projects/proyecto_ocr.png" alt="Sistema OCR — Extracción de Cédulas y Documentos Colombianos con Document AI Enterprise"
+                  class="project__mockup-img project__mockup-img--cover" />
+                <div class="project__mockup-docai" aria-hidden="true">
+                  <div class="docai-reticle docai-reticle--tl"></div>
+                  <div class="docai-reticle docai-reticle--tr"></div>
+                  <div class="docai-reticle docai-reticle--bl"></div>
+                  <div class="docai-reticle docai-reticle--br"></div>
+                  <div class="docai-beam"></div>
+                  <div class="docai-target">
+                    <span class="docai-target-tag">DocAI Enterprise</span>
+                  </div>
+                  <div class="docai-grid"></div>
+                </div>
+                <div class="project__mockup-overlay">
+                  <span>Document AI Enterprise &amp; Cruce de Identificación</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ── PROYECTO 3: Sistema OCR Farmax ── -->
+      <article class="project" data-layout="odd">
+        <div class="project__info" data-anim="left" data-delay="2">
           <h3 class="project__name">Sistema OCR — Farmax</h3>
           <p class="project__desc">
             Sistema inteligente que utiliza <strong>OCR (Reconocimiento Óptico de Caracteres)</strong>
@@ -320,7 +403,7 @@
             </a>
           </div>
         </div>
-        <div class="project__visual" data-anim="left" data-delay="3">
+        <div class="project__visual" data-anim="right" data-delay="3">
           <div class="project__mockup project__mockup--farmax">
             <div class="project__mockup-browser">
               <div class="project__mockup-bar">
@@ -340,9 +423,9 @@
         </div>
       </article>
 
-      <!-- ── PROYECTO 3: Juicios Evaluativos SENA ── -->
-      <article class="project" data-layout="odd">
-        <div class="project__info" data-anim="left" data-delay="2">
+      <!-- ── PROYECTO 4: Juicios Evaluativos SENA ── -->
+      <article class="project" data-layout="even">
+        <div class="project__info" data-anim="right" data-delay="2">
           <h3 class="project__name">Juicios Evaluativos (SENA)</h3>
           <p class="project__desc">
             Sistema web para la <strong>importación masiva (CSV/Excel), consulta y gestión</strong> del estado académico de aprendices del SENA. Ofrece filtrado avanzado por ficha o documento, control del proyecto formativo por fases (Análisis, Planeación, Ejecución, Evaluación) y tableros visuales con estadísticas de aprobación.
@@ -365,7 +448,7 @@
             </a>
           </div>
         </div>
-        <div class="project__visual" data-anim="right" data-delay="3">
+        <div class="project__visual" data-anim="left" data-delay="3">
           <div class="project__mockup project__mockup--juicios">
             <div class="project__mockup-browser">
               <div class="project__mockup-bar">
@@ -384,9 +467,9 @@
         </div>
       </article>
 
-      <!-- ── PROYECTO 4: DataOff ── -->
-      <article class="project" data-layout="even">
-        <div class="project__info" data-anim="right" data-delay="2">
+      <!-- ── PROYECTO 5: DataOff ── -->
+      <article class="project" data-layout="odd">
+        <div class="project__info" data-anim="left" data-delay="2">
           <h3 class="project__name">DataOff</h3>
           <p class="project__desc">
             APK de almacenamiento de datos con sincronización <strong>offline</strong> y optimización para
@@ -406,7 +489,7 @@
             </a>
           </div>
         </div>
-        <div class="project__visual" data-anim="left" data-delay="3">
+        <div class="project__visual" data-anim="right" data-delay="3">
           <div class="project__mockup project__mockup--dataoff">
             <div class="project__mockup-browser">
               <div class="project__mockup-bar">
