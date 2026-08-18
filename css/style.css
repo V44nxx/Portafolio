@@ -106,13 +106,12 @@ body {
   line-height: 1.65;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  cursor: none;
 }
 
-a { color: inherit; text-decoration: none; transition: color var(--ease); }
+a { color: inherit; text-decoration: none; transition: color var(--ease); cursor: pointer; }
 img { max-width: 100%; height: auto; display: block; }
 ul, ol { list-style: none; }
-button { cursor: none; border: none; background: none; font-family: inherit; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
 
 ::selection { background: var(--accent-dim); color: var(--accent); }
 
@@ -268,6 +267,12 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
 }
 .cursor--hover { width: 18px; height: 18px; background: var(--accent); }
 .cursor-follower--hover { width: 48px; height: 48px; border-color: var(--accent); }
+
+@media (hover: hover) and (pointer: fine) {
+  body, button, .project__btn, .contact__submit, .back-to-top {
+    cursor: none;
+  }
+}
 
 /* ──────────────────────────────────
    6. LOADER
@@ -625,7 +630,7 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
 /* Cada proyecto ocupa toda la sección */
 .project {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1.1fr 1fr;
   gap: var(--sp-2xl);
   align-items: center;
   padding: var(--sp-2xl) 0;
@@ -633,9 +638,13 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
 }
 .project:last-child { border-bottom: none; }
 
-/* Alternado: par → imagen a la izquierda, info a la derecha */
-.project[data-layout="even"] .project__visual { order: -1; }
-.project[data-layout="even"] .project__info   { order:  1; }
+/* Alternado en Desktop (> 992px) */
+@media (min-width: 993px) {
+  .project[data-layout="even"] .project__visual { order: 2; }
+  .project[data-layout="even"] .project__info   { order: 1; }
+  .project[data-layout="odd"] .project__visual  { order: 1; }
+  .project[data-layout="odd"] .project__info    { order: 2; }
+}
 
 /* Info lado */
 .project__name {
@@ -681,6 +690,8 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
   display: flex;
   flex-wrap: wrap;
   gap: var(--sp-sm);
+  position: relative;
+  z-index: 10;
 }
 .project__btn {
   display: inline-flex;
@@ -695,7 +706,11 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
   color: var(--accent);
   background: transparent;
   transition: all var(--ease-spring);
-  cursor: none;
+  position: relative;
+  z-index: 11;
+  pointer-events: auto !important;
+  touch-action: manipulation !important;
+  -webkit-tap-highlight-color: rgba(124,106,255,0.25);
 }
 .project__btn:hover {
   background: var(--accent-dim);
@@ -1186,15 +1201,21 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
    15. NAVBAR OVERLAY MOBILE
    ────────────────────────────────── */
 .navbar__overlay {
-  display: none;
   position: fixed; inset: 0;
-  background: rgba(0,0,0,0.7);
-  backdrop-filter: blur(4px);
+  background: rgba(0,0,0,0.75);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   z-index: calc(var(--z-nav) - 1);
   opacity: 0;
-  transition: opacity var(--ease);
+  pointer-events: none;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0.35s ease;
 }
-.navbar__overlay.visible { opacity: 1; }
+.navbar__overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
 
 /* ──────────────────────────────────
    16. RESPONSIVE COMPLETO MULTIDISPOSITIVO
@@ -1216,25 +1237,31 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
   .container { max-width: 780px; padding: 0 var(--sp-md); }
   
   .project {
-    grid-template-columns: 1fr;
-    gap: var(--sp-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--sp-lg);
     padding: var(--sp-xl) 0;
   }
-  .project[data-layout="even"] .project__info,
-  .project[data-layout="odd"] .project__info {
-    order: 1;
+  
+  /* 1. Primero la imagen / tarjeta del proyecto */
+  .project__visual {
+    order: 1 !important;
+    width: 100%;
   }
-  .project[data-layout="even"] .project__visual,
-  .project[data-layout="odd"] .project__visual {
-    order: 2;
+  
+  /* 2. Luego información, descripción, lenguajes y por último links */
+  .project__info {
+    order: 2 !important;
+    width: 100%;
   }
   
   .project__mockup-browser {
     max-width: 580px;
     margin: 0 auto;
+    width: 100%;
   }
   .project__mockup-screen {
-    height: clamp(210px, 36vw, 270px);
+    height: clamp(210px, 45vw, 280px);
   }
 
   .contact__grid {
@@ -1273,7 +1300,6 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
   .navbar__link.active {
     background: var(--accent-dim);
   }
-  .navbar__overlay { display: block; }
   .navbar__hamburger { display: flex; }
 
   /* Hero */
@@ -1327,12 +1353,16 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
     flex-direction: column;
     width: 100%;
     gap: 0.65rem;
+    position: relative;
+    z-index: 10;
   }
   .project__btn {
     width: 100%;
     justify-content: center;
     padding: 0.75rem 1rem;
     font-size: 0.85rem;
+    pointer-events: auto !important;
+    touch-action: manipulation;
   }
   
   .project__mockup-browser { border-radius: var(--r-sm); }
@@ -1395,8 +1425,19 @@ button { cursor: none; border: none; background: none; font-family: inherit; }
     display: none !important;
   }
   
-  body, a, button, input, textarea, .project__btn, .contact__submit, .skill__tag {
-    cursor: auto !important;
+  body, a, button, input, textarea, .project__btn, .contact__submit, .skill__tag, .contact__social-link {
+    cursor: pointer !important;
+  }
+  
+  .project__actions {
+    position: relative;
+    z-index: 10;
+  }
+  
+  .project__btn {
+    pointer-events: auto !important;
+    touch-action: manipulation !important;
+    -webkit-tap-highlight-color: rgba(124,106,255,0.2);
   }
   
   .project__mockup-browser {
