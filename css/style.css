@@ -442,7 +442,8 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   position: relative;
   overflow: hidden;
   background: var(--bg-hero);
-  padding: var(--sp-3xl) var(--sp-lg);
+  padding: var(--sp-3xl) 0;
+  width: 100%;
 }
 
 /* Decoraciones angulares en esquinas */
@@ -464,20 +465,22 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 }
 
 .hero__content {
+  width: 100%;
   max-width: 960px;
   margin: 0 auto;
-  width: 100%;
+  box-sizing: border-box;
 }
 
 .hero__heading {
   display: flex;
   flex-direction: column;
-  gap: 0.15em;
+  gap: 0.25em;
+  width: 100%;
 }
 
 /* "Hola, soy Emerson!" */
 .hero__greeting {
-  font-size: clamp(var(--fs-xl), 3vw, var(--fs-2xl));
+  font-size: clamp(var(--fs-lg), 3vw, var(--fs-2xl));
   font-weight: var(--fw-regular);
   color: var(--text-2);
 }
@@ -491,11 +494,13 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* "Soy un Desarrollador de Software" */
 .hero__tagline {
-  font-size: clamp(var(--fs-3xl), 6vw, var(--fs-5xl));
+  font-size: clamp(1.85rem, 5.5vw, var(--fs-5xl));
   font-weight: var(--fw-bold);
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   color: var(--text-1);
-  line-height: 1.1;
+  line-height: 1.15;
+  word-break: break-word;
+  overflow-wrap: break-word;
 }
 .hero__tagline strong {
   background: linear-gradient(135deg, var(--accent), var(--accent2));
@@ -506,7 +511,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
 /* "y [palabra rotando]." */
 .hero__rotating-line {
-  font-size: clamp(var(--fs-2xl), 4vw, var(--fs-3xl));
+  font-size: clamp(1.2rem, 3.8vw, var(--fs-3xl));
   font-weight: var(--fw-light);
   color: var(--text-2);
   letter-spacing: -0.02em;
@@ -514,6 +519,7 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   align-items: center;
   gap: 0.3em;
   flex-wrap: wrap;
+  word-break: break-word;
 }
 .hero__rotating-word {
   color: var(--accent2);
@@ -1347,12 +1353,12 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
 
   /* Hero */
   .hero {
-    min-height: 90vh;
+    min-height: 85vh;
     padding: calc(var(--nav-h) + 2rem) 0 var(--sp-2xl);
   }
-  .hero__greeting { font-size: clamp(1.1rem, 4vw, 1.35rem); }
-  .hero__tagline { font-size: clamp(1.85rem, 6.8vw, 2.75rem); line-height: 1.15; }
-  .hero__rotating-line { font-size: clamp(1.25rem, 4.8vw, 1.8rem); }
+  .hero__greeting { font-size: clamp(1.05rem, 3.8vw, 1.25rem); }
+  .hero__tagline { font-size: clamp(1.65rem, 6vw, 2.3rem); line-height: 1.2; letter-spacing: -0.02em; }
+  .hero__rotating-line { font-size: clamp(1.1rem, 4.2vw, 1.5rem); }
   
   /* Secciones & Títulos */
   .section { padding: 2.8rem 0; width: 100%; overflow: hidden; }
