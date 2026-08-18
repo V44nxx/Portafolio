@@ -342,20 +342,16 @@ button { cursor: pointer; border: none; background: none; font-family: inherit; 
   font-size: 1.3rem;
   font-weight: var(--fw-bold);
   color: var(--text-1);
-  letter-spacing: -0.05em;
+  letter-spacing: -0.04em;
   display: flex;
   align-items: center;
-  gap: 2px;
-  transition: opacity var(--ease), transform var(--ease);
+  transition: opacity var(--ease), color var(--ease);
 }
 .navbar__brand:hover {
-  opacity: 0.9;
-  transform: translateY(-1px);
+  opacity: 0.85;
 }
 .navbar__brand-dot {
   color: var(--accent);
-  display: inline-block;
-  animation: pulseDot 2s ease-in-out infinite;
 }
 .navbar__links {
   display: flex;
